@@ -1,6 +1,9 @@
+import os
+from dotenv import load_dotenv, find_dotenv
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
+from langchain_groq import ChatGroq
+
 def environment_settings():
-    import os
-    from dotenv import load_dotenv, find_dotenv
     
     try:
         # Load environment variables
@@ -36,21 +39,19 @@ def environment_settings():
         return False
 
 def connect_to_llm():
-    from langchain_google_genai import GoogleGenerativeAI
+    environment_settings()
     llm=GoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
     return llm
 def connect_to_llm_chat():
-    from langchain_google_genai import ChatGoogleGenerativeAI
+    environment_settings()
     llm=ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
     return llm
 def connect_to_groq():
-    from langchain_groq import ChatGroq
+    environment_settings()
     llm=ChatGroq(model="deepseek-r1-distill-llama-70b", temperature=0.7)
     return llm
 
 def connect_to_db_url():
-    import os
-    from dotenv import load_dotenv, find_dotenv
     load_dotenv(find_dotenv())
     DATABASE_URL = os.getenv("DATABASE_URL")
     print(f"Database URL: {DATABASE_URL}")
