@@ -3,4 +3,4 @@ langchain_google_genai
 python_dotenv
 langchain_openai
 langchain_groq
-pprint
+streamlit
