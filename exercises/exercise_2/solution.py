@@ -1,7 +1,7 @@
-from config import connect_to_llm
+from configs import load_google_llm
 import time
 
-llm = connect_to_llm()
+llm = load_google_llm()
 while True:
     prompt = input("\nEnter your prompt: ")
 
